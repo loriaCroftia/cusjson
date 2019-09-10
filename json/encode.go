@@ -633,7 +633,7 @@ func (se *structEncoder) encode(e *encodeState, v reflect.Value, opts encOpts) {
 	first := true
 	for i, f := range se.fields {
 		fv := fieldByIndex(v, f.index)
-		if !fv.IsValid() || f.omitEmpty && isEmptyValue(fv) {
+		if !fv.IsValid() && isEmptyValue(fv) {
 			continue
 		}
 		if first {
